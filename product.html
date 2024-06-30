@@ -24,6 +24,7 @@
         <div class="icons">
             <a href="login.html"><img src="./images/register.png" alt="" width="18px">Login</a>
             <a href="register.html"><img src="./images/register.png" alt="" width="18px">Register</a>
+            <a href="payment.html" class="go-to-payment"><img src="./images/register.png" alt="Cart" width="18px">Go to Payment</a>
         </div>
     </div>
     <!-- top navbar -->
@@ -737,6 +738,47 @@
             });
         });
     </script>
+
+<script>
+  // Track items added to cart
+  let cartItems = [];
+
+  // Add to cart click event
+  document.querySelectorAll('.add-to-cart').forEach(item => {
+      item.addEventListener('click', function() {
+          // Simulate adding item to cart (you can enhance this logic as per your actual implementation)
+          cartItems.push(this.closest('.card-body').querySelector('h3').innerText);
+
+          // Show message
+          this.closest('.card-body').querySelector('.message').style.display = 'block';
+          setTimeout(() => {
+              this.closest('.card-body').querySelector('.message').style.display = 'none';
+          }, 2000);
+
+          // Update cart count (if needed)
+          updateCartCount();
+      });
+  });
+
+  // Function to update cart count (if displayed)
+  function updateCartCount() {
+      // Example: Update cart count badge
+      const cartCount = document.querySelector('#cart-count');
+      if (cartCount) {
+          cartCount.innerText = cartItems.length;
+      }
+  }
+
+  // Go to Payment button click event
+  document.querySelector('.go-to-payment').addEventListener('click', function(event) {
+      // Prevent default link behavior (optional, but good practice)
+      event.preventDefault();
+
+      // Redirect to payment.html
+      window.location.href = 'payment.html';
+  });
+</script>
+
     
 
 
